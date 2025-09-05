@@ -13,11 +13,8 @@ const server = http.createServer(app)
 
 // Initialize socket.io server
 export const io = new Server(server, {
-    cors: {
-        origin: "https://chat-frontend-4ndg-byf1mojk4-kanishk-gargs-projects.vercel.app/login",
-        methods: ["GET", "POST"]
-    }
-});
+    cors: {origin: "*"}
+})
 
 
 // Store online users
@@ -43,11 +40,7 @@ io.on("connection", (socket)=>{
 // Middleware setup
 app.use(express.json({limit: "4mb"}));
 
-app.use(cors({
-    origin: "https://chat-frontend-4ndg-byf1mojk4-kanishk-gargs-projects.vercel.app/login",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true
-}));
+app.use(cors());
 
 
 
