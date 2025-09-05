@@ -4,8 +4,7 @@ import jwt from "jsonwebtoken";
 // Middleware to protect routes
 export const protectRoute = async (req, res, next)=>{
     try {
-        const token = req.headers.authorization?.split(" ")[1]; // Get token from "Authorization: Bearer <token>"
-
+        const token = req.headers.token;
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET)
 
